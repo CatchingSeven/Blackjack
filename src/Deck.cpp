@@ -2,7 +2,7 @@
 // Created by maxhe on 11/13/2025.
 //
 
-#include "Deck.h"
+#include "../include/Deck.h"
 
 
 
