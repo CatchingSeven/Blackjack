@@ -8,7 +8,7 @@ int main() {
     std::cout <<" " << std::endl;
     d.shuffle();
     d.print();
-    std::cout <<" " << std::endl;*/
+    std::cout <<" " << std::endl;
     d.shuffle();
     Card a = d.dealCard();
     Card b = d.dealCard();
@@ -23,7 +23,13 @@ int main() {
     Card c = d.dealCard();
     Card e = d.dealCard();
     std::cout << c.getName() << std::endl;
-    std::cout << e.getName() << std::endl;
+    std::cout << e.getName() << std::endl; */
+
+
+
+    std::cout << d.isEmpty();
+
+
 
 
     return 0;

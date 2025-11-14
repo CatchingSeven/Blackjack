@@ -52,3 +52,9 @@ void Deck::print() {
         std::cout << c.getName() << std::endl;
     }
 }
+
+bool Deck::isEmpty() const {
+    if (currentIndex == cards.size()) return true;
+    return false;
+
+}
