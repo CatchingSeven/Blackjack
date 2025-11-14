@@ -28,10 +28,18 @@ Deck::Deck() {
 
 void Deck::shuffle()
 {
+    currentIndex = 0; // reset current index to simulate all cards being added back to the deck before shuffling
         std::random_device rd;
         std::default_random_engine rng(rd());
         std::shuffle(cards.begin(), cards.end(), rng);
     }
+
+Card Deck::dealCard() {
+    Card c = cards[currentIndex];
+    currentIndex++; // we increment for every card dealt this turn to ensure the same card cant be drawn twice on the same turn
+
+    return c;
+}
 
 
 

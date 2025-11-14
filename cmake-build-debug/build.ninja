@@ -49,41 +49,41 @@ cmake_ninja_workdir = C$:/Users/maxhe/Programming$ Portfolio/Blackjack/cmake-bui
 
 build cmake_object_order_depends_target_Blackjack: phony || .
 
-build CMakeFiles/Blackjack.dir/main.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/main.cpp || cmake_object_order_depends_target_Blackjack
-  DEP_FILE = CMakeFiles\Blackjack.dir\main.cpp.obj.d
+build CMakeFiles/Blackjack.dir/src/main.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/src/main.cpp || cmake_object_order_depends_target_Blackjack
+  DEP_FILE = CMakeFiles\Blackjack.dir\src\main.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Blackjack.dir
-  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir
+  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir\src
 
-build CMakeFiles/Blackjack.dir/Card.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/Card.cpp || cmake_object_order_depends_target_Blackjack
-  DEP_FILE = CMakeFiles\Blackjack.dir\Card.cpp.obj.d
+build CMakeFiles/Blackjack.dir/src/Card.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/src/Card.cpp || cmake_object_order_depends_target_Blackjack
+  DEP_FILE = CMakeFiles\Blackjack.dir\src\Card.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Blackjack.dir
-  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir
+  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir\src
 
-build CMakeFiles/Blackjack.dir/Deck.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/Deck.cpp || cmake_object_order_depends_target_Blackjack
-  DEP_FILE = CMakeFiles\Blackjack.dir\Deck.cpp.obj.d
+build CMakeFiles/Blackjack.dir/src/Deck.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/src/Deck.cpp || cmake_object_order_depends_target_Blackjack
+  DEP_FILE = CMakeFiles\Blackjack.dir\src\Deck.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Blackjack.dir
-  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir
+  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir\src
 
-build CMakeFiles/Blackjack.dir/Hand.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/Hand.cpp || cmake_object_order_depends_target_Blackjack
-  DEP_FILE = CMakeFiles\Blackjack.dir\Hand.cpp.obj.d
+build CMakeFiles/Blackjack.dir/src/Hand.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/src/Hand.cpp || cmake_object_order_depends_target_Blackjack
+  DEP_FILE = CMakeFiles\Blackjack.dir\src\Hand.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Blackjack.dir
-  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir
+  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir\src
 
-build CMakeFiles/Blackjack.dir/Player.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/Player.cpp || cmake_object_order_depends_target_Blackjack
-  DEP_FILE = CMakeFiles\Blackjack.dir\Player.cpp.obj.d
+build CMakeFiles/Blackjack.dir/src/Player.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/src/Player.cpp || cmake_object_order_depends_target_Blackjack
+  DEP_FILE = CMakeFiles\Blackjack.dir\src\Player.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Blackjack.dir
-  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir
+  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir\src
 
-build CMakeFiles/Blackjack.dir/Game.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/Game.cpp || cmake_object_order_depends_target_Blackjack
-  DEP_FILE = CMakeFiles\Blackjack.dir\Game.cpp.obj.d
+build CMakeFiles/Blackjack.dir/src/Game.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/src/Game.cpp || cmake_object_order_depends_target_Blackjack
+  DEP_FILE = CMakeFiles\Blackjack.dir\src\Game.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Blackjack.dir
-  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir
+  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir\src
 
 
 # =============================================================================
@@ -93,7 +93,7 @@ build CMakeFiles/Blackjack.dir/Game.cpp.obj: CXX_COMPILER__Blackjack_unscanned_D
 #############################################
 # Link the executable Blackjack.exe
 
-build Blackjack.exe: CXX_EXECUTABLE_LINKER__Blackjack_Debug CMakeFiles/Blackjack.dir/main.cpp.obj CMakeFiles/Blackjack.dir/Card.cpp.obj CMakeFiles/Blackjack.dir/Deck.cpp.obj CMakeFiles/Blackjack.dir/Hand.cpp.obj CMakeFiles/Blackjack.dir/Player.cpp.obj CMakeFiles/Blackjack.dir/Game.cpp.obj
+build Blackjack.exe: CXX_EXECUTABLE_LINKER__Blackjack_Debug CMakeFiles/Blackjack.dir/src/main.cpp.obj CMakeFiles/Blackjack.dir/src/Card.cpp.obj CMakeFiles/Blackjack.dir/src/Deck.cpp.obj CMakeFiles/Blackjack.dir/src/Hand.cpp.obj CMakeFiles/Blackjack.dir/src/Player.cpp.obj CMakeFiles/Blackjack.dir/src/Game.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Blackjack.dir

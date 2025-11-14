@@ -2,7 +2,7 @@
 // Created by maxhe on 11/13/2025.
 //
 
-#include "Card.h"
+#include "../include/Card.h"
 
 /* helper to map enum ranks to a string */
 std::map<Suit, std::string> SuitToString = {
