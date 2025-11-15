@@ -17,6 +17,7 @@ class Hand {
     bool isBust() const;
     bool isBlackjack() const;
     std::string toString() const;
+    void clear();
 
 };
 
