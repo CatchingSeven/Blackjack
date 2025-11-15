@@ -50,3 +50,8 @@ std::string Hand::toString() const {
 
 }
 
+
+void Hand::clear() {
+    hand.clear();
+}
+
