@@ -13,12 +13,13 @@ private:
   Deck deck;
   Player player;
   Player dealer;
+  bool playerWins;
 
   void dealInitialCards();
   void playerTurn();
   void dealerTurn();
-  void showHands(bool revealDealer = false) const;
-  void determineResult() const;
+  void showHands(bool revealDealer = false);
+  void determineResult();
 public:
   void run();
 

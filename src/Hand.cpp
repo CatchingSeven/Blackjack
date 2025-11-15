@@ -51,7 +51,21 @@ std::string Hand::toString() const {
 }
 
 
+
+
 void Hand::clear() {
     hand.clear();
+}
+
+std::string Hand::hiddenToString() const {
+    // special method used to not show dealer first card
+    std::string output = "HIDDEN, ";
+    for (int i = 1; i < hand.size(); i++) {
+        output += hand[i].getName() + ", ";
+    }
+
+    return output;
+
+
 }
 

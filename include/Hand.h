@@ -18,6 +18,7 @@ class Hand {
     bool isBlackjack() const;
     std::string toString() const;
     void clear();
+    std::string hiddenToString() const;
 
 };
 
