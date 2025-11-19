@@ -14,7 +14,7 @@ std::map<Suit, std::string> SuitToString = {
 
 
 };
-std::map<Rank, std::string> RankToString = {
+std::map<Rank, std::string> RankToString = { // legacy, not used kept in case need for debuffinf purposes
   {Rank::Two, "Two"},
 {Rank::Three, "Three"},
 {Rank::Four, "Four"},

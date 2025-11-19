@@ -98,6 +98,13 @@ build CMakeFiles/Blackjack.dir/src/GameApp.cpp.obj: CXX_COMPILER__Blackjack_unsc
   OBJECT_DIR = CMakeFiles\Blackjack.dir
   OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir\src
 
+build CMakeFiles/Blackjack.dir/src/CardTexture.cpp.obj: CXX_COMPILER__Blackjack_unscanned_Debug C$:/Users/maxhe/Programming$ Portfolio/Blackjack/src/CardTexture.cpp || cmake_object_order_depends_target_Blackjack
+  DEP_FILE = CMakeFiles\Blackjack.dir\src\CardTexture.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem C:/Libraries/SFML-2.6.2/include
+  OBJECT_DIR = CMakeFiles\Blackjack.dir
+  OBJECT_FILE_DIR = CMakeFiles\Blackjack.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Blackjack
@@ -106,7 +113,7 @@ build CMakeFiles/Blackjack.dir/src/GameApp.cpp.obj: CXX_COMPILER__Blackjack_unsc
 #############################################
 # Link the executable Blackjack.exe
 
-build Blackjack.exe: CXX_EXECUTABLE_LINKER__Blackjack_Debug CMakeFiles/Blackjack.dir/src/main.cpp.obj CMakeFiles/Blackjack.dir/src/Card.cpp.obj CMakeFiles/Blackjack.dir/src/Deck.cpp.obj CMakeFiles/Blackjack.dir/src/Hand.cpp.obj CMakeFiles/Blackjack.dir/src/Player.cpp.obj CMakeFiles/Blackjack.dir/src/Game.cpp.obj CMakeFiles/Blackjack.dir/src/GameApp.cpp.obj | C$:/Libraries/SFML-2.6.2/lib/libsfml-graphics-d.a C$:/Libraries/SFML-2.6.2/lib/libsfml-window-d.a C$:/Libraries/SFML-2.6.2/lib/libsfml-audio-d.a C$:/Libraries/SFML-2.6.2/lib/libsfml-system-d.a
+build Blackjack.exe: CXX_EXECUTABLE_LINKER__Blackjack_Debug CMakeFiles/Blackjack.dir/src/main.cpp.obj CMakeFiles/Blackjack.dir/src/Card.cpp.obj CMakeFiles/Blackjack.dir/src/Deck.cpp.obj CMakeFiles/Blackjack.dir/src/Hand.cpp.obj CMakeFiles/Blackjack.dir/src/Player.cpp.obj CMakeFiles/Blackjack.dir/src/Game.cpp.obj CMakeFiles/Blackjack.dir/src/GameApp.cpp.obj CMakeFiles/Blackjack.dir/src/CardTexture.cpp.obj | C$:/Libraries/SFML-2.6.2/lib/libsfml-graphics-d.a C$:/Libraries/SFML-2.6.2/lib/libsfml-window-d.a C$:/Libraries/SFML-2.6.2/lib/libsfml-audio-d.a C$:/Libraries/SFML-2.6.2/lib/libsfml-system-d.a
   FLAGS = -g
   LINK_LIBRARIES = C:/Libraries/SFML-2.6.2/lib/libsfml-graphics-d.a  C:/Libraries/SFML-2.6.2/lib/libsfml-window-d.a  C:/Libraries/SFML-2.6.2/lib/libsfml-audio-d.a  C:/Libraries/SFML-2.6.2/lib/libsfml-system-d.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Blackjack.dir

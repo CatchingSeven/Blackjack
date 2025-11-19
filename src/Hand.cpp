@@ -69,3 +69,17 @@ std::string Hand::hiddenToString() const {
 
 }
 
+int Hand::getHandLength() {
+    return hand.size();
+
+}
+
+Suit Hand::getCardSuit(int index) const {
+    return hand[index].getSuit();
+
+}
+
+Rank Hand::getCardRank(int index) const {
+    return hand[index].getRank();
+}
+
