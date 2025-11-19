@@ -18,47 +18,16 @@ void Game::dealInitialCards() {
     }
 }
 
-void Game::playerTurn() {
-    if (!player.getHand().isBlackjack()) {
-        while (!player.getHand().isBust()) {
-            std::cout << "Select an action: (H)it or (S)tand" << std::endl;
-            char action;
-            std::cin >> action;
-            if (action == 'H' || action == 'h') {
-                player.addCard(deck.dealCard());
-                std::cout << player.getHand().toString() << std::endl;
-
-            }
-            else if (action == 'S' || action == 's') {
-                std::cout << "Player Stands" << std::endl;
-                break;
-            }
-            else {
-                std::cout << "Invalid action" << std::endl;
-            }
-
-
-        }
-    }
-
+Hand Game::getDealerHand() {
+    return dealer.getHand();
 
 }
 
-void Game::dealerTurn() {
-    if (!dealer.getHand().isBlackjack()) {
-
-        while (!dealer.getHand().isBust()) {
-            if (dealer.getHand().getBestTotal() == 17) {
-                std::cout << "Dealer Stands" << std::endl;
-                break;
-            }
-            dealer.addCard(deck.dealCard());
-            std::cout << dealer.getHand().toString() << std::endl;
-
-         }
-    }
-
+Hand Game::getPlayerHand() {
+    return player.getHand();
 }
+
+
 
 void Game::showHands(bool revealDealer){
 
@@ -76,21 +45,38 @@ void Game::showHands(bool revealDealer){
 
 
 
-void Game::determineResult() {
-    if (player.getHand().getBestTotal() > dealer.getHand().getBestTotal()) {
-       std::cout << "Player Wins" << std::endl;
+Result Game::determineResult() {
+    if (player.getHand().isBlackjack()) return Result::PlayerBlackjack;
+    if (dealer.getHand().isBlackjack()) return Result::DealerBust;
+    if (player.getHand().isBust()) return Result::PlayerBust;
+    if (dealer.getHand().isBust()) return Result::DealerBust;
+    if (dealer.getHand().getBestTotal() > player.getHand().getBestTotal()) return Result::DealerWins;
+    if (dealer.getHand().getBestTotal() < player.getHand().getBestTotal()) return Result::PlayerWins;
+
+    return Result::noResult;
+
+
+}
+
+int Game::getDealerTotal() {
+    return dealer.getHand().getBestTotal();
+}
+
+void Game::playerAction(Action action) {
+    if (action == Action::Hit) {
+        player.addCard(deck.dealCard());
     }
-    else if (player.getHand().getBestTotal() < dealer.getHand().getBestTotal()) {
-        std::cout << "The House always wins" << std::endl;
-    }
-    else {
-        std::cout << "Draw??" << std::endl;
-    }
+
+}
+
+void Game::dealerAction() { // dealer does not need action parameter
+    dealer.addCard(deck.dealCard());
 }
 
 
 
-void Game::run() {
+
+/*void Game::run() {
     dealInitialCards();
     if (player.getHand().isBlackjack()) {
         showHands(true);
@@ -136,7 +122,7 @@ void Game::run() {
     }
 
 
-}
+}*/
 
 
 
