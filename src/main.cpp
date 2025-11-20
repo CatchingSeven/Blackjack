@@ -1,14 +1,19 @@
 #include <iostream>
 #include "../include/Card.h"
 #include "../include/Deck.h"
-#include "../include/Game.h"
+#include "../include/GameApp.h"
+
 
 int main() {
     bool play = true;
 
+
     std::cout << "Welcome to the Blackjack Game!" << std::endl;
+    GameApp blackjack;
+    blackjack.run();
+
     while (play) {
-        Game game;
+        /*Game game;
         game.run();
         std::cout <<"Play again? Y/N" <<std::endl;
         char answer;
@@ -22,7 +27,7 @@ int main() {
 
         else {
             std::cout << "Invalid input! Please try again!" << std::endl;
-        }
+        }*/
 
     }
 

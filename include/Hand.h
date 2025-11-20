@@ -19,6 +19,10 @@ class Hand {
     std::string toString() const;
     void clear();
     std::string hiddenToString() const;
+    int getHandLength();
+    Rank getCardRank(int index) const;
+    Suit getCardSuit(int index) const;
+
 
 };
 
