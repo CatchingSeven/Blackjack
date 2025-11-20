@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Game.h"
-#include "CardTexture.h"
+
 
 
 extern std::map<sf::Event, Action> mapActions;

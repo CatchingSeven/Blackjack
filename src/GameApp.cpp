@@ -149,20 +149,29 @@ void GameApp::renderCards(bool revealDealer) {
 
   int posXD = 100;
   int const posYD = 200;
-  for (int i = 0; i < DealerCards.size(); i++) {
+  int index = 0;
+  if (!revealDealer) {
+    sf::Texture texture;
+    texture.loadFromFile("../assets/Cards/Back_Red.png");
+    DealerCards[0].setTexture(texture);
+    DealerCards[0].setPosition(posXD, posYD);
+    window.draw(DealerCards[0]);
+    index = 1;
+    posXD += 100;
+  }
+  for (int i = index; i < DealerCards.size(); i++) {
 
     DealerCards[i].setPosition(posXD, posYD);
-    if (i == 0 && !revealDealer) {
-      sf::Texture texture;
-      texture.loadFromFile("../assets/Cards/Back_Red.png");
-      DealerCards[i].setTexture(texture);
-    }
-    else {
-      DealerCards[i].setTexture(CardTextureDealer[i]);
-    }
+    DealerCards[i].setTexture(CardTextureDealer[i]);
+
+
     window.draw(DealerCards[i]);
     posXD += 100;
   }
+
+
+
+
 
 
 
@@ -177,6 +186,8 @@ void GameApp::updateGame(gameState& state, sf::Text& player, sf::Text& dealer, s
       game.dealInitialCards();
       player.setString(game.getPlayerHand().toString());
       dealer.setString(game.getDealerHand().toString());
+    updateCards();
+    renderCards(revealDealer);
 
 
 
@@ -188,16 +199,22 @@ void GameApp::updateGame(gameState& state, sf::Text& player, sf::Text& dealer, s
     case gameState::playerTurn:
       player.setString(game.getPlayerHand().toString());
       dealer.setString(game.getDealerHand().toString());
+    updateCards();
+    renderCards(revealDealer);
       break;
     case gameState::dealerTurn:
       dealerTurn(state);
     revealDealer = true;
       player.setString(game.getPlayerHand().toString());
       dealer.setString(game.getDealerHand().toString());
+    updateCards();
+    renderCards(revealDealer);
       break;
     case gameState::roundEnd:
       player.setString(game.getPlayerHand().toString());
     dealer.setString(game.getDealerHand().toString());
+    updateCards();
+    renderCards(revealDealer);
 
       Result r = game.determineResult();
       if (r == Result::PlayerBlackjack) {
@@ -266,7 +283,7 @@ void GameApp::run(){
 
 
 
-  CardTexture cardTexture;
+
 
 
 
@@ -292,8 +309,7 @@ void GameApp::run(){
 
         window.clear();
         updateGame(gameState, playerText, dealerText, winText);
-        updateCards();
-        renderCards(revealDealer);
+
         window.draw(winText);
 
 
