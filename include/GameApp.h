@@ -37,10 +37,16 @@ class GameApp {
   private:
 
     sf::RenderWindow window;
+    sf::RectangleShape background;
     sf::Font font;
     sf::Text restart;
     sf::Text winText;
+    sf::Text title;
     gameState gameState;
+    sf::Sprite playButton;
+    sf::Texture missingTexture;
+
+
 
 
 
@@ -54,6 +60,7 @@ class GameApp {
     std::vector<sf::Sprite> DealerCards;
     std::vector<sf::Texture> CardTexturePlayer;
     std::vector<sf::Texture> CardTextureDealer;
+    void loadAssets();
     void mainMenu();
     void play();
     void handleInput(const sf::Event& event);
