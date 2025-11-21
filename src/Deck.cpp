@@ -8,7 +8,7 @@
 
 
 
-
+/* Could this be better? */
 Deck::Deck() {
     currentIndex = 0;
     cards.reserve(52);

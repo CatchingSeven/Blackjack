@@ -6,117 +6,108 @@
 using namespace sf;
 
 
-std::string GameApp::mapCardTexture(Rank rank , Suit suit) {
-  std::string pathToCard = "../assets/Cards/";
-  switch(suit){
-    case Suit::Clubs:
-      pathToCard += "Clubs/";
-    break;
-    case Suit::Diamonds:
-      pathToCard += "Diamonds/";
-    break;
-    case Suit::Hearts:
-      pathToCard += "Hearts/";
-    break;
-    case Suit::Spades:
-      pathToCard += "Spades/";
-    break;
-    default:
-      break;
-  }
-
-  switch(rank){
-    case Rank::Two:
-      pathToCard += "2";
-    break;
-    case Rank::Three:
-      pathToCard += "3";
-    break;
-    case Rank::Four:
-      pathToCard += "4";
-    break;
-    case Rank::Five:
-      pathToCard += "5";
-    break;
-    case Rank::Six:
-      pathToCard += "6";
-    break;
-    case Rank::Seven:
-      pathToCard += "7";
-    break;
-    case Rank::Eight:
-      pathToCard += "8";
-    break;
-    case Rank::Nine:
-      pathToCard += "9";
-    break;
-    case Rank::Ace:
-      pathToCard += "A";
-    break;
-    case Rank::Jack:
-      pathToCard += "J";
-    break;
-    case Rank::Queen:
-      pathToCard += "Q";
-    break;
-    case Rank::King:
-      pathToCard += "K";
-    break;
-    default:
-      break;
-  }
+std::map<Suit, std::string> SuitToDir = {
+  {Suit::Clubs, "Clubs/"},
+{Suit::Diamonds, "Diamonds/"},
+{Suit::Hearts, "Hearts/"},
+{Suit::Spades, "Spades/"},
 
 
-  pathToCard += ".png";
-  return pathToCard;
+
+};
+std::map<Rank, std::string> RankToImage = {
+  {Rank::Two, "2.png"},
+{Rank::Three, "3.png"},
+{Rank::Four, "4.png"},
+{Rank::Five, "5.png"},
+{Rank::Six, "6.png"},
+{Rank::Seven, "7.png"},
+{Rank::Eight, "8.png"},
+{Rank::Nine, "9.png"},
+{Rank::Ten, "10.png"},
+{Rank::Jack, "J.png"},
+{Rank::Queen, "Q.png"},
+{Rank::King, "K.png"},
+{Rank::Ace, "A.png"},
+
+};
+
+/** Helpers */
+static std::string mapCardTexture(Rank rank , Suit suit) {
+
+  return "../assets/Cards/"+SuitToDir[suit]+RankToImage[rank];
 
 }
 
-void GameApp::handleInput(const sf::Event& event, gameState& state) {
-  if (game.determineResult() != Result::PlayerBlackjack && game.determineResult() != Result::PlayerBust) {
-      if (event.type == sf::Event::KeyPressed && state ==  gameState::playerTurn) {
+static std::string resultToString(Result result) {
+  switch (result) {
+    case Result::PlayerBlackjack: return "Blackjack";
+    case Result::PlayerBust: return "Player Bust";
+    case Result::PlayerWins: return "Player Wins";
+    case Result::DealerBlackjack: return "Dealer Blackjack";
+    case Result::DealerBust: return "Dealer Bust";
+    case Result::DealerWins: return "Dealer Wins";
+  }
+  return "No Winner?";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** GameApp definitions */
+
+void GameApp::handleInput(const sf::Event& event) {
+
+      if (event.type == sf::Event::KeyPressed && gameState ==  gameState::playerTurn) {
           if (event.key.code == sf::Keyboard::H) game.playerAction(Action::Hit);
-          if (event.key.code == sf::Keyboard::S) state = gameState::dealerTurn;
+          if (event.key.code == sf::Keyboard::S) gameState = gameState::dealerTurn;
 
       }
+
+     if (event.type == sf::Event::KeyPressed && gameState ==  gameState::roundEnd) {
+       if (event.key.code == sf::Keyboard::Y) gameState = gameState::roundStart;
+       if (event.key.code == sf::Keyboard::Q) window.close();
+
+     }
     }
 
-  else {
-     state = gameState::roundEnd;
-  }
 
 
-}
 
-void GameApp::dealerTurn(gameState& state) {
-  if (game.determineResult() != Result::DealerBlackjack && game.determineResult() != Result::DealerBust) {
+
+
+void GameApp::dealerTurn() {
+
         if (game.getDealerTotal() < 17){
               game.dealerAction();
 
             }
             else {
-            state = gameState::roundEnd;
+            gameState = gameState::roundEnd;
             }
-        }
-  else {
-        state = gameState::roundEnd;
-    }
+
+
 
 }
 
-void GameApp::updateCards() {
+void GameApp::updateCards(bool revealDealer) {
   Hand d = game.getDealerHand();
   Hand p = game.getPlayerHand();
-  if (d.getHandLength() > 0 || p.getHandLength() > 0) { // i feel like wiping every time cards gets updated may be ineffiecnet but its also safer than potentially running into bugs where the card sprites hang in memory
-    PlayerCards.clear();
-    DealerCards.clear();
-    CardTexturePlayer.clear();
-    CardTextureDealer.clear();
 
-  }
 
   for (int i = 0; i < d.getHandLength(); i++) { // having two seperate for loops for the two vectors is inefficent, will find a better way
     sf::Texture texture;
+    if (!revealDealer&&i==0) texture.loadFromFile("../assets/Cards/Back_Red.png");
     texture.loadFromFile(mapCardTexture(d.getCardRank(i), d.getCardSuit(i))); // essentially, we use a method that returns a string here, this string constructs a path to the relevent texture
     CardTextureDealer.push_back(texture);
     sf::Sprite sprite;
@@ -137,36 +128,31 @@ void GameApp::updateCards() {
 
 }
 
-void GameApp::renderCards(bool revealDealer) {
-  int posX = 100;
-  int const posY = 800;
+void GameApp::renderCards() {
+  int step = window.getSize().x / 10;
+  int playerCardPosX = step;
+  int const playerCardPosY = window.getSize().y - window.getSize().y / 3;
+  int dealerCardPosX = window.getSize().x / 10;
+  int const dealerCardPosY = window.getSize().y / 8;
+
+
   for (int i = 0; i < PlayerCards.size(); i++) {
-    PlayerCards[i].setPosition(posX, posY);
+    PlayerCards[i].setPosition(playerCardPosX, playerCardPosY);
     PlayerCards[i].setTexture(CardTexturePlayer[i]);
+    PlayerCards[i].setScale(scaleX, scaleY);
     window.draw(PlayerCards[i]);
-    posX += 100;
+    playerCardPosX += step;
   }
 
-  int posXD = 100;
-  int const posYD = 200;
-  int index = 0;
-  if (!revealDealer) {
-    sf::Texture texture;
-    texture.loadFromFile("../assets/Cards/Back_Red.png");
-    DealerCards[0].setTexture(texture);
-    DealerCards[0].setPosition(posXD, posYD);
-    window.draw(DealerCards[0]);
-    index = 1;
-    posXD += 100;
-  }
-  for (int i = index; i < DealerCards.size(); i++) {
 
-    DealerCards[i].setPosition(posXD, posYD);
+
+  for (int i = 0; i < DealerCards.size(); i++) {
+
+    DealerCards[i].setPosition(dealerCardPosX, dealerCardPosY);
     DealerCards[i].setTexture(CardTextureDealer[i]);
-
-
+    DealerCards[i].setScale(scaleX, scaleY);
     window.draw(DealerCards[i]);
-    posXD += 100;
+    dealerCardPosX += step;
   }
 
 
@@ -178,115 +164,90 @@ void GameApp::renderCards(bool revealDealer) {
 
 
 }
+void GameApp::clear() {
+  PlayerCards.clear();
+  DealerCards.clear();
+  CardTexturePlayer.clear();
+  CardTextureDealer.clear();
+  winText.setString("");
+  restart.setString("");
+  window.clear();
 
-void GameApp::updateGame(gameState& state, sf::Text& player, sf::Text& dealer, sf::Text& winner) {
+}
 
-  switch (state) { // we loop through each potential state to see what the game needs to do at this point
+
+void GameApp::display() {
+  renderCards();
+  window.draw(winText);
+  window.draw(restart);
+  window.display();
+
+}
+
+void GameApp::updateGame() {
+
+  switch (gameState) { // we loop through each potential state to see what the game needs to do at this point
     case gameState::roundStart:
+      revealDealer = false;
       game.dealInitialCards();
-      player.setString(game.getPlayerHand().toString());
-      dealer.setString(game.getDealerHand().toString());
-    updateCards();
-    renderCards(revealDealer);
-
-
-
-
-
-
-    state = gameState::playerTurn;
-      break;
-    case gameState::playerTurn:
-      player.setString(game.getPlayerHand().toString());
-      dealer.setString(game.getDealerHand().toString());
-    updateCards();
-    renderCards(revealDealer);
-      break;
-    case gameState::dealerTurn:
-      dealerTurn(state);
-    revealDealer = true;
-      player.setString(game.getPlayerHand().toString());
-      dealer.setString(game.getDealerHand().toString());
-    updateCards();
-    renderCards(revealDealer);
-      break;
-    case gameState::roundEnd:
-      player.setString(game.getPlayerHand().toString());
-    dealer.setString(game.getDealerHand().toString());
-    updateCards();
-    renderCards(revealDealer);
-
-      Result r = game.determineResult();
-      if (r == Result::PlayerBlackjack) {
-        winner.setString("Player blackjack");
-      }
-      else if (r == Result::PlayerBust) {
-        winner.setString("Player bust");
-      }
-      else if (r == Result::DealerBlackjack) {
-        winner.setString("Dealer blackjack");
-      }
-      else if (r == Result::DealerBust) {
-        winner.setString("Dealer bust");
-      }
-      else if (r == Result::DealerWins) {
-        winner.setString("Dealer wins");
-      }
-      else if (r == Result::PlayerWins) {
-        winner.setString("Player wins");
-
+      if (game.determineResult() != Result::PlayerBlackjack && game.determineResult() != Result::PlayerBust) {
+        gameState = gameState::playerTurn;
       }
       else {
-        winner.setString("idk");
+        gameState = gameState::roundEnd;
       }
+      break;
+    case gameState::playerTurn:
+      if (game.determineResult() == Result::PlayerBlackjack || game.determineResult() == Result::PlayerBust) gameState = gameState::roundEnd;
+      break;
+    case gameState::dealerTurn:
+      revealDealer = true;
+    if (game.determineResult() != Result::DealerBlackjack && game.determineResult() != Result::DealerBust) {
+      dealerTurn();
+    }
+    else {
+      gameState = gameState::roundEnd;
+    }
+
+
+      break;
+    case gameState::roundEnd:
+      revealDealer = true;
+
+      winText.setString(resultToString(game.determineResult()));
+      restart.setString("Play Again? (Y to continue Q to quit)");
+
       break;
 
   }
+}
+
+void mainMenu() {
+
+
 }
 
 
 
 
 void GameApp::run(){
-    window.create(sf::VideoMode(1600, 1200), "Blackjack v0.0.1 Alpha");
+    window.create(sf::VideoMode(1280, 720), "Blackjack v0.1.0 Alpha");
 
-    sf::Font font;
+
     sf::Text dealerText;
-    sf::Text playerText;
-    sf::Text winText;
-    gameState gameState = gameState::roundStart;
+    gameState = gameState::roundStart;
 
     font.loadFromFile("DejaVuSans.ttf");
-    dealerText.setFont(font);
-    dealerText.setCharacterSize(20);
-    playerText.setFont(font);
-    playerText.setCharacterSize(20);
-    playerText.setString("Player");
-    dealerText.setString("Dealer");
-
-    playerText.setFillColor(sf::Color::Red);
-    dealerText.setFillColor(sf::Color::Red);
-
-    playerText.setPosition(100, 1100);
-    dealerText.setPosition(100, 100);
-
     winText.setFont(font);
-    winText.setCharacterSize(20);
+    winText.setCharacterSize(30);
     winText.setFillColor(sf::Color::Red);
 
-    winText.setPosition(800, 600);
+    restart.setFont(font);
+    restart.setCharacterSize(30);
+    restart.setFillColor(sf::Color::Red);
 
 
-
-  sf::Sprite sprite;
-  sf::RectangleShape rectangle(sf::Vector2f(120.f, 50.f));
-
-
-
-
-
-
-
+    winText.setPosition(window.getSize().x/2, window.getSize().y/2);
 
 
 
@@ -298,7 +259,7 @@ void GameApp::run(){
         while (window.pollEvent(event))
         {
 
-          handleInput(event, gameState); // I was very stupid and oringally left this function outsie of the poll event loop, and was stuck wondering why it wasnt working lmao
+          handleInput(event); // I was very stupid and oringally left this function outsie of the poll event loop, and was stuck wondering why it wasnt working lmao
 
             if (event.type == sf::Event::Closed)
                 window.close();
@@ -307,14 +268,17 @@ void GameApp::run(){
 
 
 
-        window.clear();
-        updateGame(gameState, playerText, dealerText, winText);
+        clear();
+        updateCards();
+        updateGame();
 
-        window.draw(winText);
+        display();
 
 
 
-        window.display();
+
+
+
 
 
 
