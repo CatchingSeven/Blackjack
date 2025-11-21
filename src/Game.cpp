@@ -7,6 +7,9 @@
 
 void Game::dealInitialCards() {
     /* we shuffle the deck (this could also be done in the run loop) */
+    player.clearHand(); // reset the hands because *BIG* Surprise! if you dont they wont disapear when the game restarts
+    dealer.clearHand();
+
     deck.shuffle();
 
     int count = 0;
@@ -28,7 +31,7 @@ Hand Game::getPlayerHand() {
 }
 
 
-
+/**Legacy */
 void Game::showHands(bool revealDealer){
 
     std::cout << "Player Hand: " << player.getHand().toString() << std::endl;

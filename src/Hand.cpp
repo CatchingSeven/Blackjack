@@ -40,6 +40,7 @@ bool Hand::isBlackjack() const {
     return getBestTotal() == 21;
 }
 
+/**Legacy */
 std::string Hand::toString() const {
     std::string output = "";
     for (int i = 0; i < hand.size(); i++) {
@@ -56,7 +57,7 @@ std::string Hand::toString() const {
 void Hand::clear() {
     hand.clear();
 }
-
+/**Legacy */
 std::string Hand::hiddenToString() const {
     // special method used to not show dealer first card
     std::string output = "HIDDEN, ";
