@@ -68,17 +68,26 @@ static std::string resultToString(Result result) {
 
 void GameApp::handleInput(const sf::Event& event) {
 
-      if (event.type == sf::Event::KeyPressed && gameState ==  gameState::playerTurn) {
-          if (event.key.code == sf::Keyboard::H) game.playerAction(Action::Hit);
-          if (event.key.code == sf::Keyboard::S) gameState = gameState::dealerTurn;
+  if (gameState ==  gameState::playerTurn) {
+    if (event.type == sf::Event::KeyPressed ) {
+      if (event.key.code == sf::Keyboard::H) game.playerAction(Action::Hit);
+      if (event.key.code == sf::Keyboard::S) gameState = gameState::dealerTurn;
 
-      }
+    }
 
-     if (event.type == sf::Event::KeyPressed && gameState ==  gameState::roundEnd) {
-       if (event.key.code == sf::Keyboard::Y) gameState = gameState::roundStart;
-       if (event.key.code == sf::Keyboard::Q) gameState = gameState::mainMenu;
+  }
+  if (gameState ==  gameState::roundEnd) {
+    if (event.type == sf::Event::KeyPressed) {
+      if (event.key.code == sf::Keyboard::Y) gameState = gameState::roundStart;
+      if (event.key.code == sf::Keyboard::Q) gameState = gameState::mainMenu;
 
-     }
+    }
+
+  }
+
+
+
+
 
     if (gameState ==  gameState::mainMenu) {
       if (event.mouseButton.button == sf::Mouse::Left) {
@@ -177,6 +186,7 @@ void GameApp::renderCards() {
 }
 void GameApp::clear() {
   // This is not recursion obviously
+
   PlayerCards.clear();
   DealerCards.clear();
   CardTexturePlayer.clear();
@@ -188,9 +198,7 @@ void GameApp::clear() {
 }
 
 
-void GameApp::display() {
-
-  renderCards();
+void GameApp::display() { // for whatever reason putting background in here seems to break it and force background to display
   window.draw(winText);
   window.draw(restart);
 
@@ -231,6 +239,7 @@ void GameApp::updateGame() {
       winText.setString(resultToString(game.determineResult()));
       restart.setString("Play Again? (Y to continue Q to quit)");
 
+
       break;
 
   }
@@ -249,6 +258,10 @@ void GameApp::mainMenu() {
 void GameApp::loadAssets() {
 
   /* We load all assets in here at the start This just makes the run method much cleaner*/
+
+  /* Background */
+  background.setSize((sf::Vector2f(window.getSize())));
+  background.setFillColor(sf::Color(50, 200, 50));
 
   /* Menu assets */
   font.loadFromFile("../assets/Fonts/DejaVuSans.ttf");
@@ -286,13 +299,9 @@ void GameApp::loadAssets() {
 
 
 void GameApp::run(){
-    window.create(sf::VideoMode(1280, 720), "Blackjack v0.1.1 Alpha - Menu Additions");
+    window.create(sf::VideoMode(1280, 720), "Blackjack v0.1.2 Alpha - Background Fix");
     loadAssets();
-  /* Background */
-  background.setSize((sf::Vector2f(window.getSize())));
 
-
-  background.setFillColor(sf::Color(50, 200, 50));
 
 
 
@@ -305,6 +314,7 @@ void GameApp::run(){
 
     while (window.isOpen())
     {
+
 
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
@@ -319,25 +329,24 @@ void GameApp::run(){
 
 
 
+      clear();
 
-
-
-        clear();
+      if (gameState == gameState::mainMenu) {
         window.draw(background);
+        mainMenu();
+      }
+      else {
+        updateGame();
+        updateCards();
+        window.draw(background);//putting background before we draw other assets in these statements seems to fix the bacground issues... I wonder why?
+        renderCards();
+
+      }
 
 
-        if (gameState == gameState::mainMenu) {
-          mainMenu();
-
-        }
-        else {
-          updateCards();
-          updateGame();
-        }
 
 
-
-        display();
+        display();//However, putting text in drawing in display is fine?
 
 
 

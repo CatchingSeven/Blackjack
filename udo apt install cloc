@@ -1,0 +1,123 @@
+[33mcommit 116f8e01a16c2f53c20b2fd22b4b26a9975bb2dd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 46020b1 9dffd50
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Thu Nov 20 15:17:20 2025 +1030
+
+    Merge pull request #5 from CatchingSeven/SMFL-implementation
+    
+    type(feat): Implemented basic game in sfml.
+
+[33mcommit 9dffd500eefdc2a7ce335c0e2737dbc110f2f90a[m[33m ([m[1;32mSMFL-implementation[m[33m)[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Thu Nov 20 10:51:31 2025 +1030
+
+    type(fix): Fixed the texture bug for the hidden dealer card.
+    
+    Biggest issues now are cards not displaying all the time so if the player goes bust it wont show the card that made them go bust. I'm going to PR because this is stable. Plus then I can review
+    
+    Just noticed a weird bug, failed to load image errors in the console, images are loading so I think i have so left over code somewhere that I forgot to remove
+
+[33mcommit c7d48c7d99c5ab2c2d339f6e3694df51a8654b46[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Thu Nov 20 10:51:22 2025 +1030
+
+    type(fix): Fixed the texture bug for the hidden dealer card.
+    
+    Biggest issues now are cards not displaying all the time so if the player goes bust it wont show the card that made them go bust. I'm going to PR because this is stable. Plus then I can review
+    
+    Just noticed a weird bug, failed to load image errors in the console, images are loading so I think i have so left over code somewhere that I forgot to remove
+
+[33mcommit ab1fb36b3f23482be5e281784cc865b43501d631[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Thu Nov 20 10:16:50 2025 +1030
+
+    type(feat): CardTexture class redundant. I was a bit silly and thought I would need it. Turns out I was better of creating two vectors for Sprites and textures and mapping them before I render them to screen. Which is what I did.
+    
+    Anyway, the card textures load and update and all that fun stuff so the game is "Playable", still only for one round right now but it is progress. Some bug still present with loading the hidden dealer card texture, will figure out soon
+
+[33mcommit 0ca4d95a459513ed9edae3fec2918e295634bfca[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Wed Nov 19 17:03:25 2025 +1030
+
+    type(feat): New class implemented called GameApp.cpp/GameApp.h. SFML is working.
+    
+     - So SFML is now somewhat implemented, by that I mean the game can be played text based in a window and it plays(only for a single round right now).
+     - I redesigned the game class to act as a sort of controller class between the front-end game rendering class (gameApp) and the core game logic. Its very messy at the moment but it is stable enought to commit. Hence why i am doing it now
+
+[33mcommit 46020b14a86a317dcb0ba53fccf92c70d52d55cc[m
+Merge: 6d701dd 2d7d801
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Sun Nov 16 17:00:33 2025 +1030
+
+    Merge pull request #4 from CatchingSeven/core-gameloop-creation
+    
+    Core game loop finished. ALl core features implemented. Works in console. Next the game needs to be made interactive via SFML.
+
+[33mcommit 2d7d8016930579d19ef3a25e6a9a1fcda39dd574[m[33m ([m[1;32mcore-gameloop-creation[m[33m)[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Sat Nov 15 16:11:31 2025 +1030
+
+    Core game loop finished. ALl core features implemented. Works in console. Next the game needs to be made interactive via SFML.
+
+[33mcommit 6d701dd68e65ab0d880de3fa73383c16bfdb5e9b[m
+Merge: 7ce94a5 9b00991
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Sat Nov 15 12:39:45 2025 +1030
+
+    Merge pull request #3 from CatchingSeven/player-class-definition
+    
+    Player class defined. did not take long
+
+[33mcommit 9b009916cd4e88539416e28e35eab611c1c2c8fd[m[33m ([m[1;32mplayer-class-definition[m[33m)[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Sat Nov 15 12:38:49 2025 +1030
+
+    Player class defined. did not take long
+
+[33mcommit 7ce94a50bbf2e2c697e78f0c9a2dc8a8a43d1d3c[m
+Merge: cd19b56 d003fb3
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Sat Nov 15 12:20:54 2025 +1030
+
+    Merge pull request #2 from CatchingSeven/hand-class-definition
+    
+    type(feat): finished defining hand class functions. Cant test until player class is defined so i'll do that one next
+
+[33mcommit d003fb34e80b1198b4f86b32ebb8f30681e81342[m[33m ([m[1;32mhand-class-definition[m[33m)[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Sat Nov 15 12:17:54 2025 +1030
+
+    type(feat): finished defining hand class functions. Cant test until player class is defined so i'll do that one next
+
+[33mcommit cd19b5654ebdb2958fed8a434898e55e0c92a98b[m
+Merge: 9798c5a c901483
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Fri Nov 14 21:56:59 2025 +1030
+
+    Merge pull request #1 from CatchingSeven/deck-class-definition
+    
+    Deck class definition
+
+[33mcommit c90148358207be5955f13f81d0d4921cf9540c56[m[33m ([m[1;32mdeck-class-definition[m[33m)[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Fri Nov 14 21:55:01 2025 +1030
+
+    type(feat): defined isEmpty() function.
+
+[33mcommit 7748a2f7ce4ef8313a0e7748648991e40e192d8e[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Fri Nov 14 16:43:46 2025 +1030
+
+    type(feat): Defined card shuffling and dealing methods in the Deck class
+
+[33mcommit 9798c5a6b1a0e0ab3f535231a54b630a125a2218[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Fri Nov 14 16:12:10 2025 +1030
+
+    Redid project struture so it is easier to navigate. Added 4 new directories: include, src, docs and assets. I did this because before everything was just freely floating in the root directory lol.
+
+[33mcommit 0ec2d68a1f8a06c0e6617916b3e764c200098c8e[m
+Author: CatchingSeven <maxheinrich113@gmail.com>
+Date:   Fri Nov 14 16:00:49 2025 +1030
+
+    Initial commit
