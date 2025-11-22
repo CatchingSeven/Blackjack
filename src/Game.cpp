@@ -76,6 +76,14 @@ void Game::dealerAction() { // dealer does not need action parameter
     dealer.addCard(deck.dealCard());
 }
 
+std::string Game::getDealerCardValue() {
+    return std::to_string(dealer.getHand().getBestTotal());
+}
+std::string Game::getPlayerCardValue() {
+    return std::to_string(player.getHand().getBestTotal());
+}
+
+
 
 
 

@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Game.h"
+#include <string.h>;
 
 
 
@@ -38,13 +39,18 @@ class GameApp {
 
     sf::RenderWindow window;
     sf::RectangleShape background;
+    sf::Texture backgroundTexture;
     sf::Font font;
     sf::Text restart;
     sf::Text winText;
     sf::Text title;
+    sf::Text dealerScore;
+    sf::Text playerScore;
     gameState gameState;
     sf::Sprite playButton;
     sf::Texture missingTexture;
+    float width;
+    float height;
 
 
 

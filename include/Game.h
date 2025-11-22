@@ -41,6 +41,8 @@ public:
   void showHands(bool revealDealer = false);
   Hand getDealerHand();
   Hand getPlayerHand();
+  std::string getDealerCardValue();
+  std::string getPlayerCardValue();
   Result determineResult();
 
   void run();
