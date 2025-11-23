@@ -149,11 +149,11 @@ void GameApp::updateCards(bool revealDealer) {
 }
 
 void GameApp::renderCards() {
-  int step = window.getSize().x / 10;
-  int playerCardPosX = step;
-  int const playerCardPosY = window.getSize().y - window.getSize().y / 3;
-  int dealerCardPosX = window.getSize().x / 10;
-  int const dealerCardPosY = window.getSize().y / 8;
+  float const step = width*0.1f;
+  float playerCardPosX = step;
+  float dealerCardPosX = step;
+  float const playerCardPosY = height * 0.75f;
+  float const dealerCardPosY = height * 0.10f;
 
 
   for (int i = 0; i < PlayerCards.size(); i++) {
@@ -251,6 +251,7 @@ void GameApp::updateGame() {
 }
 
 void GameApp::mainMenu() {
+  window.draw(settingsButton);
   window.draw(playButton);
   window.draw(title);
 
@@ -277,27 +278,39 @@ void GameApp::loadAssets() {
   title.setCharacterSize(100);
   title.setString("Blackjack");
   title.setOrigin(title.getLocalBounds().width / 2, title.getLocalBounds().height / 2);
-  title.setPosition(width/2.f, (width/2.f)*0.5f);
+  title.setPosition(width/2.f, (width/2.f)*0.3f);
 
 
-  missingTexture.loadFromFile("../assets/UI-Elements/PlayButton.png");
-  playButton.setTexture(missingTexture);
+  /* I know.. Don't repeat yourself, and i'm almost certain i could make a map for this... */
+
+  playTexture.loadFromFile("../assets/UI-Elements/PlayButton.png");
+  playButton.setTexture(playTexture);
   playButton.setScale(scaleX, scaleY);
   playButton.setOrigin(playButton.getLocalBounds().width / 2, playButton.getLocalBounds().height / 2);
-  playButton.setPosition(width/2.f, (height/2.f)*1.2f);
+  playButton.setPosition(width/2.f, (height/2.f)*0.9f);
+
+
+  settingsTexture.loadFromFile("../assets/UI-Elements/SettingsButton.png");
+  settingsButton.setTexture(settingsTexture);
+  settingsButton.setScale(scaleX, scaleY);
+  settingsButton.setOrigin(settingsButton.getLocalBounds().width / 2, settingsButton.getLocalBounds().height / 2);
+  settingsButton.setPosition(width/2.f, (height/2.f)*1.3f);
+
+
 
 
   /* Game Assets */
 
   winText.setFont(font);
-  winText.setCharacterSize(30);
+  winText.setCharacterSize(70);
   winText.setFillColor(sf::Color::White);
+  winText.setOrigin(winText.getLocalBounds().width / 2, winText.getLocalBounds().height / 2);
+  winText.setPosition(width/2.f, height/2.f);
 
   restart.setFont(font);
   restart.setCharacterSize(30);
   restart.setFillColor(sf::Color::White);
-  winText.setOrigin(winText.getLocalBounds().width / 2, winText.getLocalBounds().height / 2);
-  winText.setPosition(width/2, height/2);
+
 
   dealerScore.setFont(font);
   dealerScore.setCharacterSize(30);
@@ -318,7 +331,7 @@ void GameApp::loadAssets() {
 
 
 void GameApp::run(){
-  window.create(sf::VideoMode(1920, 1080), "Blackjack v0.1.3 Alpha - Scores Addition");
+  window.create(sf::VideoMode(1920, 1080), "Blackjack v0.1.4 Alpha: Menu Additions");
   window.setVerticalSyncEnabled(true);
   window.setFramerateLimit(60);
   std::cout << window.getSystemHandle() << std::endl;
