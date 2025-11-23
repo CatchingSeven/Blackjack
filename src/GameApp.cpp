@@ -68,17 +68,26 @@ static std::string resultToString(Result result) {
 
 void GameApp::handleInput(const sf::Event& event) {
 
-      if (event.type == sf::Event::KeyPressed && gameState ==  gameState::playerTurn) {
-          if (event.key.code == sf::Keyboard::H) game.playerAction(Action::Hit);
-          if (event.key.code == sf::Keyboard::S) gameState = gameState::dealerTurn;
+  if (gameState ==  gameState::playerTurn) {
+    if (event.type == sf::Event::KeyPressed ) {
+      if (event.key.code == sf::Keyboard::H) game.playerAction(Action::Hit);
+      if (event.key.code == sf::Keyboard::S) gameState = gameState::dealerTurn;
 
-      }
+    }
 
-     if (event.type == sf::Event::KeyPressed && gameState ==  gameState::roundEnd) {
-       if (event.key.code == sf::Keyboard::Y) gameState = gameState::roundStart;
-       if (event.key.code == sf::Keyboard::Q) gameState = gameState::mainMenu;
+  }
+  if (gameState ==  gameState::roundEnd) {
+    if (event.type == sf::Event::KeyPressed) {
+      if (event.key.code == sf::Keyboard::Y) gameState = gameState::roundStart;
+      if (event.key.code == sf::Keyboard::Q) gameState = gameState::mainMenu;
 
-     }
+    }
+
+  }
+
+
+
+
 
     if (gameState ==  gameState::mainMenu) {
       if (event.mouseButton.button == sf::Mouse::Left) {
@@ -177,28 +186,32 @@ void GameApp::renderCards() {
 }
 void GameApp::clear() {
   // This is not recursion obviously
+
   PlayerCards.clear();
   DealerCards.clear();
   CardTexturePlayer.clear();
   CardTextureDealer.clear();
   winText.setString("");
   restart.setString("");
+  dealerScore.setString("");
+  playerScore.setString("");
   window.clear();
 
 }
 
 
-void GameApp::display() {
-
-  renderCards();
+void GameApp::display() { // for whatever reason putting background in here seems to break it and force background to display
   window.draw(winText);
   window.draw(restart);
+  window.draw(dealerScore);
+  window.draw(playerScore);
 
   window.display();
 
 }
 
 void GameApp::updateGame() {
+
 
   switch (gameState) { // we loop through each potential state to see what the game needs to do at this point
     case gameState::roundStart:
@@ -231,6 +244,7 @@ void GameApp::updateGame() {
       winText.setString(resultToString(game.determineResult()));
       restart.setString("Play Again? (Y to continue Q to quit)");
 
+
       break;
 
   }
@@ -249,6 +263,12 @@ void GameApp::mainMenu() {
 void GameApp::loadAssets() {
 
   /* We load all assets in here at the start This just makes the run method much cleaner*/
+  width = window.getSize().x;
+  height = window.getSize().y;
+  /* Background */
+  backgroundTexture.loadFromFile("../assets/Background-Images/Background.jpg");
+  background.setSize((sf::Vector2f(window.getSize())));
+  background.setTexture(&backgroundTexture);
 
   /* Menu assets */
   font.loadFromFile("../assets/Fonts/DejaVuSans.ttf");
@@ -257,27 +277,39 @@ void GameApp::loadAssets() {
   title.setCharacterSize(100);
   title.setString("Blackjack");
   title.setOrigin(title.getLocalBounds().width / 2, title.getLocalBounds().height / 2);
-  title.setPosition(window.getSize().x/2, window.getSize().y/2-200);
+  title.setPosition(width/2.f, (width/2.f)*0.5f);
 
 
   missingTexture.loadFromFile("../assets/UI-Elements/PlayButton.png");
   playButton.setTexture(missingTexture);
   playButton.setScale(scaleX, scaleY);
   playButton.setOrigin(playButton.getLocalBounds().width / 2, playButton.getLocalBounds().height / 2);
-  playButton.setPosition((window.getSize().x/2), (window.getSize().y / 2));
+  playButton.setPosition(width/2.f, (height/2.f)*1.2f);
 
 
   /* Game Assets */
 
   winText.setFont(font);
   winText.setCharacterSize(30);
-  winText.setFillColor(sf::Color::Red);
+  winText.setFillColor(sf::Color::White);
 
   restart.setFont(font);
   restart.setCharacterSize(30);
-  restart.setFillColor(sf::Color::Red);
+  restart.setFillColor(sf::Color::White);
   winText.setOrigin(winText.getLocalBounds().width / 2, winText.getLocalBounds().height / 2);
-  winText.setPosition(window.getSize().x/2, window.getSize().y/2);
+  winText.setPosition(width/2, height/2);
+
+  dealerScore.setFont(font);
+  dealerScore.setCharacterSize(30);
+  dealerScore.setFillColor(sf::Color::White);
+  dealerScore.setOrigin(dealerScore.getLocalBounds().width / 2, dealerScore.getLocalBounds().height/2);
+  dealerScore.setPosition(width*0.05f, height*0.05f);
+
+  playerScore.setFont(font);
+  playerScore.setCharacterSize(30);
+  playerScore.setFillColor(sf::Color::White);
+  playerScore.setOrigin(playerScore.getLocalBounds().width / 2, playerScore.getLocalBounds().height/2);
+  playerScore.setPosition(width*0.05f, height*0.95f);
 
 }
 
@@ -286,13 +318,15 @@ void GameApp::loadAssets() {
 
 
 void GameApp::run(){
-    window.create(sf::VideoMode(1280, 720), "Blackjack v0.1.1 Alpha - Menu Additions");
-    loadAssets();
-  /* Background */
-  background.setSize((sf::Vector2f(window.getSize())));
+  window.create(sf::VideoMode(1920, 1080), "Blackjack v0.1.3 Alpha - Scores Addition");
+  window.setVerticalSyncEnabled(true);
+  window.setFramerateLimit(60);
+  std::cout << window.getSystemHandle() << std::endl;
 
 
-  background.setFillColor(sf::Color(50, 200, 50));
+
+  loadAssets();
+
 
 
 
@@ -305,6 +339,7 @@ void GameApp::run(){
 
     while (window.isOpen())
     {
+
 
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
@@ -319,25 +354,27 @@ void GameApp::run(){
 
 
 
+      clear();
 
-
-
-        clear();
+      if (gameState == gameState::mainMenu) {
         window.draw(background);
+        mainMenu();
+      }
+      else {
+        updateGame();
+        updateCards();
+        window.draw(background);//putting background before we draw other assets in these statements seems to fix the bacground issues... I wonder why?
+        renderCards();
 
 
-        if (gameState == gameState::mainMenu) {
-          mainMenu();
-
-        }
-        else {
-          updateCards();
-          updateGame();
-        }
+        dealerScore.setString("Dealer Score: " + game.getDealerCardValue());
+        playerScore.setString("Player Score: " + game.getPlayerCardValue());
+      }
 
 
 
-        display();
+
+        display();//However, putting text in drawing in display is fine?
 
 
 
