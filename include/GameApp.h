@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Game.h"
+#include "SettingsMenu.h"
 #include <string.h>;
 
 
@@ -15,11 +16,15 @@ extern std::map<sf::Event, Action> mapActions;
 
 enum class gameState {
   mainMenu,
+  settings,
   roundStart,
   playerTurn,
   dealerTurn,
   roundEnd
 };
+
+
+
 
 
 
@@ -36,19 +41,25 @@ extern std::map<Rank, std::string> RankToImage;
 
 class GameApp {
   private:
+  Settings settings;
 
     sf::RenderWindow window;
     sf::RectangleShape background;
     sf::Texture backgroundTexture;
+    sf::Texture settingsTexture;
+    sf::Texture playTexture;
+
     sf::Font font;
     sf::Text restart;
     sf::Text winText;
     sf::Text title;
     sf::Text dealerScore;
     sf::Text playerScore;
+
     gameState gameState;
     sf::Sprite playButton;
-    sf::Texture missingTexture;
+    sf::Sprite settingsButton;
+    sf::Sprite statsButton;
     float width;
     float height;
 
