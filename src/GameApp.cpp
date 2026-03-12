@@ -186,6 +186,7 @@ void GameApp::renderCards() {
 }
 void GameApp::clear() {
   // This is not recursion obviously
+  //update 12/03/2026, I have no idea why I made the above comment, why I even had to state that this wasn't recursion? was it because I'm calling the sfml clear method? in the gameApp clear method? is that not obvious? oh my God...
 
   PlayerCards.clear();
   DealerCards.clear();
