@@ -261,6 +261,8 @@ void GameApp::mainMenu() {
 
 }
 
+/* this whole method? it is God awful, like it was written by an amateur. and this all used to be in the run method too. refector the whole thing, you can do way better than this */
+
 void GameApp::loadAssets() {
 
   /* We load all assets in here at the start This just makes the run method much cleaner*/
