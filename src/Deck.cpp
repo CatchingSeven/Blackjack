@@ -9,13 +9,15 @@
 
 
 /* Could this be better? */
+
+
 Deck::Deck() {
     currentIndex = 0;
     cards.reserve(52);
 
     
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {//answer is yes obviously, hard coded values? not good find a better way mate
         for (int j = 2; j <= 14; j++) {
             Card c( static_cast<Suit>(i), static_cast<Rank>(j) );
             cards.push_back(c);
