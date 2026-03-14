@@ -3,7 +3,7 @@
 28	544	7848012173328457	CMakeFiles/Blackjack.dir/main.cpp.obj	9daadd9306911671
 940	1122	7854876800067875	Blackjack.exe	63e76d906d1f6abd
 36	767	7848008728700688	CMakeFiles/Blackjack.dir/Card.cpp.obj	e15ddc4f389979c4
-2	278	7854899669526370	build.ninja	402d5df35e07b090
+2	278	7951589217951444	build.ninja	402d5df35e07b090
 45	512	7848008728790659	CMakeFiles/Blackjack.dir/Hand.cpp.obj	727d246df8491d71
 34	644	7848012173388135	CMakeFiles/Blackjack.dir/Deck.cpp.obj	679dc6a2d406d263
 50	523	7848008728830667	CMakeFiles/Blackjack.dir/Player.cpp.obj	8c09872841963b95
@@ -15,3 +15,9 @@
 70	935	7854745804456332	CMakeFiles/Blackjack.dir/src/Deck.cpp.obj	a64d59e044ab9e35
 22	902	7852399906248888	CMakeFiles/Blackjack.dir/src/Card.cpp.obj	65977b5d991f61dc
 4	940	7854876790713745	CMakeFiles/Blackjack.dir/src/GameApp.cpp.obj	4ab84e81d5839208
+30	508	7951589323595376	CMakeFiles/Blackjack.dir/src/Settings.cpp.obj	ee572b672cdafa50
+16	509	7951589323450528	CMakeFiles/Blackjack.dir/src/Player.cpp.obj	fda669956a8b8a30
+20	780	7951589323490513	CMakeFiles/Blackjack.dir/src/Game.cpp.obj	6aa80dc6ae10b57b
+6	883	7951590450132018	CMakeFiles/Blackjack.dir/src/main.cpp.obj	c83f6270ce09f24e
+12	1195	7951590450194915	CMakeFiles/Blackjack.dir/src/GameApp.cpp.obj	4ab84e81d5839208
+1195	1689	7951590462035573	Blackjack.exe	8dd01a38f5facbb6
