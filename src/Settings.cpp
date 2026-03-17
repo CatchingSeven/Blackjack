@@ -8,7 +8,7 @@ bool isSetTo(std::string line) {
     int delimeterPos = line.find_first_of("=");
     if (delimeterPos != std::string::npos) {
         std::string value = line.substr(delimeterPos + 1);
-        if (value == "true")return true;
+        if (value == "1")return true;
 
     }
     return false;
@@ -39,11 +39,24 @@ bool Settings::loadFromFile(const std::string& fileName) { // ok so we read in t
 
 }
 
+bool Settings::findLine(const std::string &searchString, std::string& fileName) {
+
+
+}
+
+
 
 bool Settings::saveToFile(const std::string& fileName) { // so we do the inverse of load
     std::ofstream file(fileName);
     if (!file.is_open()) return false;
     std::string line;
+    /* I am hard coding this for now, need to see it work first, yeah I am aware technical debt aint good*/
+    file << "fullscreen=" << fullscreen << std::endl;
+    file << "vsync=" << vsync << std::endl;
+    file << "showFPS=" << showFPS;
+    file.close();//something will go wrong here
+
+
 
 
 }

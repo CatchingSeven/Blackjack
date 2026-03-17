@@ -1,0 +1,3 @@
+fullscreen=0
+vsync=0
+showFPS=0

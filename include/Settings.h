@@ -8,6 +8,7 @@
 
 
 
+
 class Settings { //ok I'm starting to remember now.  but why are those three bools already set to false?
 public:
     bool fullscreen = false; //could make a settings struct
@@ -16,6 +17,7 @@ public:
 
     bool loadFromFile(const std::string& fileName);
     bool saveToFile(const std::string& fileName);
+    bool findLine(const std::string& searchString, std::string& fileName);
 
 };
 
