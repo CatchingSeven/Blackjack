@@ -31,3 +31,10 @@
 34	830	7954241602118273	CMakeFiles/Blackjack.dir/src/Settings.cpp.obj	ee572b672cdafa50
 14	1291	7954241601920852	CMakeFiles/Blackjack.dir/src/main.cpp.obj	c83f6270ce09f24e
 1291	1536	7954241614679222	Blackjack.exe	8dd01a38f5facbb6
+36	791	7954246064259838	CMakeFiles/Blackjack.dir/src/Settings.cpp.obj	ee572b672cdafa50
+12	1439	7954246064024080	CMakeFiles/Blackjack.dir/src/main.cpp.obj	c83f6270ce09f24e
+14	1671	7954247792986748	CMakeFiles/Blackjack.dir/src/main.cpp.obj	c83f6270ce09f24e
+25	2124	7954247793111261	CMakeFiles/Blackjack.dir/src/GameApp.cpp.obj	4ab84e81d5839208
+2125	2466	7954247814098836	Blackjack.exe	8dd01a38f5facbb6
+14	1849	7954248817117427	CMakeFiles/Blackjack.dir/src/GameApp.cpp.obj	4ab84e81d5839208
+1849	2124	7954248835465597	Blackjack.exe	8dd01a38f5facbb6

@@ -8,6 +8,7 @@
 #include <SFML/Window.hpp>
 #include "Game.h"
 #include <string.h>;
+#include "Settings.h"
 
 
 
@@ -40,7 +41,7 @@ extern std::map<Rank, std::string> RankToImage;
 
 class GameApp {
   private:
-  //Settings settings; // Why is this here? what was I doing ughhh
+  Settings settings; // Why is this here? what was I doing ughhh
 
     sf::RenderWindow window;
     sf::RectangleShape background;

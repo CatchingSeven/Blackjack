@@ -331,7 +331,14 @@ void GameApp::loadAssets() {
 
 
 void GameApp::run(){
-  window.create(sf::VideoMode(1920, 1080), "Blackjack v0.1.4 Alpha: Menu Additions");
+  settings.loadFromFile("settings.txt");
+
+  if (settings.fullscreen) {
+    window.create(sf::VideoMode(1920, 1080), "Blackjack v0.1.4 Alpha: Menu Additions");
+  }
+  else {
+    window.create(sf::VideoMode(1080, 720), "Blackjack v0.1.4");
+  }
   window.setVerticalSyncEnabled(true);
   window.setFramerateLimit(60);
   std::cout << window.getSystemHandle() << std::endl;

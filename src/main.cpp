@@ -14,8 +14,8 @@ int main() {
 
     std::cout << "Welcome to the Blackjack Game!" << std::endl;
     GameApp blackjack;
-    Settings settings;
-    settings.saveToFile("settings.txt");
+   // Settings settings;
+    //settings.saveToFile("settings.txt");
 
     blackjack.run();
 
