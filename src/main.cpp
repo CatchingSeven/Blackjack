@@ -2,6 +2,7 @@
 #include "../include/Card.h"
 #include "../include/Deck.h"
 #include "../include/GameApp.h"
+#include "../include/Settings.h"
 
 
 int main() {
@@ -13,9 +14,12 @@ int main() {
 
     std::cout << "Welcome to the Blackjack Game!" << std::endl;
     GameApp blackjack;
+   // Settings settings;
+    //settings.saveToFile("settings.txt");
+
     blackjack.run();
 
-    while (play) {
+    /*while (play) {
         /*Game game;
         game.run();
         std::cout <<"Play again? Y/N" <<std::endl;
@@ -30,9 +34,9 @@ int main() {
 
         else {
             std::cout << "Invalid input! Please try again!" << std::endl;
-        }*/
+        }
 
-    }
+    }*/
 
 
 

@@ -14,3 +14,7 @@ Current Objectives:
 9. settings?
 10. Full blackjack experience, right now only hitting and standing, maybe implement double down, splitting etc.
 11. Refactoring, Refactoring, Refactoring! the code is very messy especially on the front end, this needs to be fixed.
+
+
+update March 2026
+so... I kind of abandoned this project. the funny thing is, is that it was almost done, but this is not reflected in the main branch. I went on to try and make much more complicated stuff, got overwhelmed and abandoned all of my projects lmao. When I find the time I will finish this off because it was actually looking pretty good. 
