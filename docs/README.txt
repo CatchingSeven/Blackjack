@@ -1,7 +1,3 @@
-Here is the text fully formatted with Markdown so it renders cleanly with proper headings, lists, and code blocks on GitHub. You can copy this exactly as it is and paste it into your `README.md` file.
-
-***
-
 # Blackjack-SFML
 
 This project began during a university break. My primary motivation was to further develop my understanding of Object-Oriented Programming (OOP) concepts and to gain more practical experience writing C++. It has evolved from its initial console-based origins into a fully interactive, graphical Blackjack game built using the Simple Fast Multimedia Library (SFML).
@@ -21,7 +17,6 @@ While the game works, it is currently in an active development phase. The initia
 To compile this locally, you need a C++17 compatible compiler and SFML installed on your system.
 
 **Important:** Inside the `CMakeLists.txt`, the `SFML_DIR` variable is hardcoded to my local environment directory. You must update this path to point to your own SFML installation before running CMake.
-
 ```cmake
 # Example of what to change in CMakeLists.txt:
 set(SFML_DIR "C:/Path/To/Your/SFML/lib/cmake/SFML")
