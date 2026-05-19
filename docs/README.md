@@ -30,3 +30,8 @@ To compile this locally to edit the source code, you need a C++17 compatible com
 ```cmake
 # Example of what to change in CMakeLists.txt:
 set(SFML_DIR "C:/Path/To/Your/SFML/lib/cmake/SFML")
+
+## License
+This project is licensed under the MIT License. 
+
+You are free to use, modify, and distribute this software, provided that the original copyright notice and this permission notice are included in all copies or substantial portions of the software. See the `LICENSE` file for more details.
