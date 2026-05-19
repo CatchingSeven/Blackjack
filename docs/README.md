@@ -32,7 +32,7 @@ To compile this locally to edit the source code, you need a C++17 compatible com
 set(SFML_DIR "C:/Path/To/Your/SFML/lib/cmake/SFML")
 ```
 ## Credits
-*   **Code & Architecture:** [Your Name/Username]
+*   **Code & Architecture:** CatchingSeven
 *   **Visual Assets:** The card graphics used in this build are free/open-source assets. I originally sourced them during the early prototyping phase and am currently tracking down the original creator's page to provide full and proper attribution. If you happen to recognize these specific assets, please open an issue or reach out so I can update this section immediately!
 
 ## License
