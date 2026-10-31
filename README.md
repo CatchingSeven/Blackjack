@@ -94,7 +94,7 @@ While the core gameplay has been implemented, certain aspects of the application
 
 I've decided to leave the project in its current state, rather than continue developing it, as I think it serves as a useful record of my programming experience at the time.
 
-**Note:** Yeah, I know its pretty rough around the edges. Some of the code is genuinely painful to look at now, particularly the graphical stuff. But I was still figuring things out as I went along, and I think that becomes painfully obvious in certain parts of the code.
+**Note:** Yeah, I know its pretty rough around the edges. Some of the code is genuinely painful to look at now, particularly the graphical stuff. But I was still figuring things out as I went along, and I think that becomes painfully obvious in certain parts of the code 😆.
 
 ## Credits
 
