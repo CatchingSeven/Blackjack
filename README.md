@@ -46,17 +46,20 @@ Nevertheless, working through these problems helped me develop a better understa
 
 **Compatibility:** This project was developed specifically for Windows, and is not intended to run on Linux or macOS.
 
-## Running the Application
+## Downloading and Running the Game
 
-A compiled Windows executable is included in the repository, so you do not need to compile the source code yourself to run the application.
+A compiled Windows version of Blackjack is available through the repository's GitHub Releases page. You do not need to compile the source code yourself to play the game.
+
+**Latest Release:** [Blackjack v0.1.4 — Windows](https://github.com/CatchingSeven/Blackjack/releases/tag/v0.1.4)
 
 To run the game:
 
-1. Download or clone the repository.
-2. Navigate to the `cmake-build-debug` directory.
-3. Run `Blackjack.exe`.
+1. Navigate to the [Releases](https://github.com/CatchingSeven/Blackjack/releases) page.
+2. Download `Blackjack.zip` from the release assets.
+3. Extract the ZIP archive to a directory of your choice.
+4. Run `Blackjack.exe`.
 
-The executable requires the included SFML DLL files and graphical assets to function correctly. Make sure the existing directory structure is preserved, otherwise the application may not be able to locate the required files.
+**Important:** Make sure to preserve the directory structure when extracting the archive. The application requires the included SFML DLLs and graphical assets to function correctly.
 
 ### Controls
 
@@ -88,9 +91,13 @@ Once this has been configured, the project can be built using CMake.
 
 ## Project Status
 
+**Current Version:** v0.1.4 (Windows pre-release)
+
 This project is no longer under active development.
 
-While the core gameplay has been implemented, certain aspects of the application remain unfinished, particularly the settings functionality. There are also several areas of the codebase that could benefit from refactoring, especially the graphical interface.
+While the core gameplay has been implemented, certain aspects of the application remain unfinished. Most notably, the settings button is present in the main menu but currently does nothing.
+
+There are also several areas of the codebase that could benefit from refactoring, especially the graphical interface.
 
 I've decided to leave the project in its current state, rather than continue developing it, as I think it serves as a useful record of my programming experience at the time.
 
