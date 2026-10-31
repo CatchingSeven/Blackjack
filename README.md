@@ -1,41 +1,111 @@
-# Blackjack-SFML
+# Blackjack
 
-This project began during a university break. My primary motivation was to further develop my understanding of Object-Oriented Programming (OOP) concepts and to gain more practical experience writing C++. It has evolved from its initial console-based origins into a fully interactive, graphical Blackjack game built using the Simple Fast Multimedia Library (SFML).
+## Overview
 
-## Project Status: Playable & Expanding
-The core game is fully functional. The application runs entirely within an SFML window, starting with a fully implemented Main Menu. Standard rounds of Blackjack (hitting, standing, and dealer logic) are completely playable, with the gameplay loop driven by an internal enum-based state machine that handles player turns, dealer turns, and round resolution.
+Blackjack is a single-player Blackjack game developed in C++ using the Simple and Fast Multimedia Library (SFML). I originally started working on this project during a university break, primarily as a means of further developing my understanding of Object-Oriented Programming (OOP) and becoming more comfortable programming in C++.
 
-While the game works, it is currently in an active development phase. The initial front-end code became quite messy as I was learning SFML, so a major ongoing priority is refactoring the codebase to cleanly decouple the game logic from the rendering layer. Simultaneously, I am expanding the game to include more complex mechanics and meta-features.
+Initially, the project was developed as a simple console-based application, with most of my attention being directed towards implementing the underlying game logic and applying OOP concepts in practice. However, as development progressed, I decided to expand the project into a graphical application using SFML. Having never worked with a graphical library before, this presented an opportunity to learn something new while continuing to develop my existing programming skills.
 
-## Tech Stack & Compatibility
-*   **Language:** C++17
-*   **Graphics/Windowing:** SFML 2.5 (Graphics, Window, System, and Audio modules)
-*   **Build System:** CMake 3.30+
-*   **OS:** Developed and tested on Windows.
+Although the project is no longer under active development, I've decided to keep it around as a demonstration of what I learned throughout the development process.
 
-## How to Use This Project
+## Features and Implementation
 
-There are two ways to interact with this project: playing the current working build or compiling the source code yourself.
+The application implements the fundamental mechanics of Blackjack, allowing the player to compete against a computer-controlled dealer.
 
-### 1. Playing the Game (No Compilation Required)
-While the game is still in active development, the core gameplay loop is functional. You can run it without needing C++ or CMake:
-*   Download the project folder.
-*   Ensure all provided SFML `.dll` files and the asset folders remain in the exact same directory as the executable.
-*   Run `Blackjack.exe`.
+The current implementation includes:
 
-### 2. Building from Source (For Developers)
-To compile this locally to edit the source code, you need a C++17 compatible compiler and SFML 2.5 installed on your system.
+- A graphical interface developed using SFML.
+- A main menu allowing the player to start a game.
+- The ability to hit or stand during a round.
+- Automated dealer behaviour, with the dealer drawing cards until reaching a hand value of at least 17.
+- Card shuffling, dealing and hand-value calculations.
+- Round outcomes and the ability to start another round.
 
-**Important for CMake:** Inside the `CMakeLists.txt`, the `SFML_DIR` variable is hardcoded to my local environment directory. You must update this path to point to your own SFML installation before running CMake.
+The application makes use of several classes to represent the different components of the game, including cards, decks, hands and players. This allowed me to apply concepts such as encapsulation and abstraction, while keeping the underlying game logic seperate from the graphical interface.
+
+Additionally, the application uses an enum-based state machine to manage the progression of the game, including the main menu, player and dealer turns, and the conclusion of each round.
+
+## Development and Learning
+
+One of the main reasons I began working on this project was to gain more practical experience with C++ and OOP outside of university coursework. While I had already gained some experience with the language, I wanted to become more comfortable developing applications consisting of multiple classes, and understanding how these classes should interact with one another.
+
+The transition from a console-based application to a graphical interface was probably the most challenging aspect of development. Having never used SFML before, I had to familiarise myself with concepts such as rendering, textures, sprites, event handling and managing the application window.
+
+As I continued developing the graphical interface, I also began to encounter problems with how I had structured the application. In particular, the code responsible for rendering and handling the game became increasingly difficult to maintain as I introduced additional functionality.
+
+Looking back at the code now, I can definitely see where I could have approached certain things differently. For example, some of the functionality within the `GameApp` class would have been better implemented using smaller, more specialised components rather than having one class responsible for so much of the application.
+
+Nevertheless, working through these problems helped me develop a better understanding of software design, particularly the importance of separating responsibilities between classes and considering maintainability during development.
+
+## Technologies Used
+
+- **Programming Language:** C++17
+- **Graphical Library:** SFML 2.6.2
+- **Build System:** CMake 3.30+
+- **Operating System:** Windows
+
+**Compatibility:** This project was developed specifically for Windows, and is not intended to run on Linux or macOS.
+
+## Running the Application
+
+A compiled Windows executable is included in the repository, so you do not need to compile the source code yourself to run the application.
+
+To run the game:
+
+1. Download or clone the repository.
+2. Navigate to the `cmake-build-debug` directory.
+3. Run `Blackjack.exe`.
+
+The executable requires the included SFML DLL files and graphical assets to function correctly. Make sure the existing directory structure is preserved, otherwise the application may not be able to locate the required files.
+
+### Controls
+
+| Key | Function |
+|---|---|
+| Mouse | Select Play from the main menu |
+| H | Hit |
+| S | Stand |
+| Y | Start another round |
+| Q | Return to the main menu after a round |
+
+## Building from Source
+
+If you would prefer to compile the application yourself, you will need a C++17 compatible compiler, CMake and SFML installed on your system.
+
+The project was developed using SFML 2.6.2, and its CMake configuration requires SFML 2.5 or later.
+
+Before compiling, you will need to configure the `SFML_DIR` variable in `CMakeLists.txt` to point towards your own SFML installation.
+
+For example:
+
 ```cmake
-# Example of what to change in CMakeLists.txt:
-set(SFML_DIR "C:/Path/To/Your/SFML/lib/cmake/SFML")
+set(SFML_DIR "C:/path/to/your/SFML/lib/cmake/SFML")
 ```
+
+Replace the example directory with the actual location of SFML on your system.
+
+Once this has been configured, the project can be built using CMake.
+
+## Project Status
+
+This project is no longer under active development.
+
+While the core gameplay has been implemented, certain aspects of the application remain unfinished, particularly the settings functionality. There are also several areas of the codebase that could benefit from refactoring, especially the graphical interface.
+
+I've decided to leave the project in its current state, rather than continue developing it, as I think it serves as a useful record of my programming experience at the time.
+
+**Note:** Yeah, I know its pretty rough around the edges. Some of the code is genuinely painful to look at now, particularly the graphical stuff. But I was still figuring things out as I went along, and I think that becomes painfully obvious in certain parts of the code.
+
 ## Credits
-*   **Code & Architecture:** CatchingSeven
-*   **Visual Assets:** The card graphics used in this build are free/open-source assets. I originally sourced them during the early prototyping phase and am currently tracking down the original creator's page to provide full and proper attribution. If you happen to recognize these specific assets, please open an issue or reach out so I can update this section immediately!
+
+**Programming and application development:** CatchingSeven
+
+The card graphics used in the application were obtained from freely available assets during the early stages of development. Unfortunately, I haven't been able to find the original source of these assets to provide proper attribution.
+
+If you happen to recognise them, feel free to let me know.
 
 ## License
-This project is licensed under the MIT License. 
 
-You are free to use, modify, and distribute this software, provided that the original copyright notice and this permission notice are included in all copies or substantial portions of the software. See the `LICENSE` file for more details.
+This project is licensed under the MIT License.
+
+You are free to use, modify and distribute the software under the conditions outlined in the [LICENSE](LICENSE) file.
